@@ -43,6 +43,7 @@ model = UNet(
     dim=64,
     dim_mults=(1, 2, 4, 8),
     channels=3,
+    out_channels=1,
     dropout=0.1
 )
 
@@ -58,7 +59,8 @@ print(output.shape)  # e.g., torch.Size([1, 3, 256, 256])
 |--|--|--|--|
 | `dim` | `int` | `64` | Base number of feature channels |
 | `dim_mults` | `tuple` | `(1, 2, 4, 8)` | Channel multipliers per U-Net stage |
-| `channels` | `int` | `3` | Number of input/output channels (e.g., 3 for RGB) |
+| `channels` | `int` | `3` | Number of input channels (e.g., 3 for RGB) |
+| `out_channels` | `int` | `1` | Number of output channels (e.g., 1 for binary and 2 or more for multi-class) |
 | `dropout` | `float` | `0.0` | Dropout rate for regularization. |
 
 ## 🙋‍♂️ Author

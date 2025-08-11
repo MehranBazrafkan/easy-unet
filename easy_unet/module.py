@@ -248,12 +248,14 @@ class EasyUNet(Module):
             dim=64,
             dim_mults = (1, 2, 4, 8),
             channels = 4,
+            out_channels = 1,
             dropout = 0.,
         ):
         super().__init__()
         self.dim = dim
         self.dim_mults = dim_mults
         self.channels = channels
+        self.out_channels = out_channels
         self.dropout = dropout
 
         encoder_dims = [*map(lambda m: dim * m, dim_mults)]
@@ -286,7 +288,7 @@ class EasyUNet(Module):
         # ----- Decoder ----- #
 
         self.final_res_block = ResnetBlock(dim * 2, dim, dropout=dropout)
-        self.final_conv = nn.Conv2d(dim, channels, kernel_size=1)
+        self.final_conv = nn.Conv2d(dim, out_channels, kernel_size=1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # Initial conv and first ResBlock

@@ -1,6 +1,6 @@
 [project]
 name = "easy-unet"
-version = "0.1.0"
+version = "0.1.1"
 description = "A lightweight and flexible PyTorch library providing a modular UNet implementation with advanced attention and normalization blocks for fast image processing and deep learning development."
 readme = "README.md"
 requires-python = ">=3.10"
